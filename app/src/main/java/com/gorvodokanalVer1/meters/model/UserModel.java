@@ -5,15 +5,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class UserModel {
     private static UserModel instance;
 
     private String login;
-    private HashMap<Integer,String> ls;
-    private  int countSupportItems;
+    private Map<Integer, String> ls;
+    private int countSupportItems;
     private boolean status;
-    private  String email;
+    private String email;
     private int userId;
     private int statusAuth = 0;
 
@@ -25,7 +28,7 @@ public class UserModel {
         return statusAuth;
     }
 
-    private UserModel(String login, HashMap<Integer, String> ls, int countSupportItems, boolean status, String email, int userId) {
+    private UserModel(String login, Map<Integer, String> ls, int countSupportItems, boolean status, String email, int userId) {
         this.login = login;
         this.ls = ls;
         this.countSupportItems = countSupportItems;
@@ -34,12 +37,14 @@ public class UserModel {
         this.userId = userId;
     }
 
-    public void removeLs(Integer lsUser){
+    public void removeLs(Integer lsUser) {
         ls.remove(lsUser);
-            }
-    public void addLs(Integer lsUser,String login) {
-        ls.put(lsUser,login);
     }
+
+    public void addLs(Integer lsUser, String login) {
+        ls.put(lsUser, login);
+    }
+
     public String getLogin() {
         return login;
     }
@@ -48,7 +53,7 @@ public class UserModel {
         return countSupportItems;
     }
 
-    public HashMap<Integer, String> getLs() {
+    public Map<Integer, String> getLs() {
         return ls;
     }
 
@@ -76,30 +81,47 @@ public class UserModel {
         return email;
     }
 
-    public static void createInstance(String login, HashMap<Integer, String> ls, int countSupportItems, boolean status, String email,int userId) {
-        instance = new UserModel(login, ls,countSupportItems,status,email,userId);
+    public static void createInstance(String login, Map<Integer, String> ls, int countSupportItems, boolean status, String email, int userId) {
+        instance = new UserModel(login, ls, countSupportItems, status, email, userId);
     }
 
     public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public  static void createInstanceFromJson(JSONObject json) throws JSONException {
-        HashMap<Integer, String> ls = new HashMap<>();
+    public static void createInstanceFromJson(JSONObject json) throws JSONException {
+        LinkedHashMap<Integer, String> ls = new LinkedHashMap<>();
+
+
         JSONArray lsList = json.getJSONArray("ls");
-        for(int i = 0; i < lsList.length(); i++) {
-            JSONObject currentLs = (JSONObject) lsList.get(i);
-            ls.put(Integer.parseInt(currentLs.getString("ID")), currentLs.getString("LOGIN"));
-        }
+
         Integer countSupportItems = Integer.parseInt(json.getString("SupportItems"));
         String login = json.getString("login");
+
+
         boolean status = json.getBoolean("statusConfirmMail");
         String email = json.getString("email");
         int userId = json.getInt("id");
-        UserModel.createInstance(login,ls,countSupportItems,status,email,userId);
+
+        for (int i = 0; i < lsList.length(); i++) {
+
+            JSONObject currentLs = (JSONObject) lsList.get(i);
+            if (currentLs.getString("LOGIN").equals(login)) {
+                ls.put(Integer.parseInt(currentLs.getString("ID")), currentLs.getString("LOGIN"));
+            }
+        }
+        for (int i = 0; i < lsList.length(); i++) {
+            JSONObject currentLs = (JSONObject) lsList.get(i);
+            if (!currentLs.getString("LOGIN").equals(login)) {
+                ls.put(Integer.parseInt(currentLs.getString("ID")), currentLs.getString("LOGIN"));
+            }
+        }
+
+        UserModel.createInstance(login, ls, countSupportItems, status, email, userId);
     }
-    public void clearLs(){
-        this.ls =  new HashMap<Integer, String>();
+
+    public void clearLs() {
+        this.ls = new LinkedHashMap<>();
     }
 
 

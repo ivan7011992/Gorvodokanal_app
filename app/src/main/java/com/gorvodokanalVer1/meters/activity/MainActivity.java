@@ -81,13 +81,15 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     ImageView imageView;
     ProgressDialog mDialog;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (true) {
-            throw new RuntimeException("Error");
-        }
+//        if (true) {
+//            throw new RuntimeException("Error");
+//        }
         instance = this;
         imageView = this.findViewById(R.id.image2);
         passwordUser = findViewById(R.id.password);
@@ -182,6 +184,16 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             getUserData();
         }
         ;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(UserModel.getInstance() != null){
+            Intent appActivity = new Intent(this, AppActivity.class);
+            startActivity(appActivity);
+        }
+
     }
 
     public void getUserData() {

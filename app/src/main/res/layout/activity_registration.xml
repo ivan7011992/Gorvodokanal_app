@@ -206,7 +206,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/headerRegistr"
-            android:layout_marginRight="50dp"
             android:layout_below="@+id/phone"
             app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
             />
@@ -235,7 +234,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/headerRegistr"
-
             android:layout_below="@+id/passwordReg"
             app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
             />
