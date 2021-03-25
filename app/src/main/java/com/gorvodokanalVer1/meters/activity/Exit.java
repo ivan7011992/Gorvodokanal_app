@@ -1,5 +1,6 @@
 package com.gorvodokanalVer1.meters.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,13 +25,15 @@ public class Exit extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         Bundle bundle = new Bundle();
-        UserModel.getInstance(). setStatusAuth(1);
-        getActivity().finish();
+       UserModel.clearInstance();
 
         RequestQueueSingleton.getInstance(getContext());
         CookieManager cookieManager = (CookieManager) CookieHandler.getDefault();
         CookieStore cookieStore = cookieManager.getCookieStore();
         cookieStore.removeAll();
+
+        Intent intent = new Intent(getContext(),MainActivity.class);
+        startActivity(intent);
 
 
         return inflater.inflate(R.layout.fragment_exit, container, false);

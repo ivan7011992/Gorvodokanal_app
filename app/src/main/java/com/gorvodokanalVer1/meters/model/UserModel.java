@@ -85,6 +85,10 @@ public class UserModel {
         instance = new UserModel(login, ls, countSupportItems, status, email, userId);
     }
 
+    public  static  void clearInstance(){
+        instance = null;
+    }
+
     public void setStatus(boolean status) {
         this.status = status;
     }
