@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:143469917248:android:1b9205cbf0a384a7819ba5",
+        "android_client_info": {
+          "package_name": "com.gorvodokanal.myapplicationdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143469917248-9is9435er1841pnuctah3l9g0gpgginn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPtvr1s8beVqTxiEZbqhnVNext13r8QN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143469917248-9is9435er1841pnuctah3l9g0gpgginn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:143469917248:android:dcbf25bf612b188e819ba5",
         "android_client_info": {
           "package_name": "com.gorvodokanalVer1"
