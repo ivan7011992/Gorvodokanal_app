@@ -194,7 +194,7 @@ public class PassMetersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                   passMetersData(adapter.getUserData());
+                   passMetersData(adapter);
 
             }
         });
@@ -215,8 +215,8 @@ public class PassMetersFragment extends Fragment {
 
 
 
-    public void passMetersData(ArrayList<String> userData) {
-
+    public void passMetersData(SummaryPassItemAdapter adapter) {
+        ArrayList<String> userData = adapter.getUserData();
         final RequestQueue mQueue = RequestQueueSingleton.getInstance(getContext());
         HashMap<String, Object> requestData = new HashMap<String, Object>();
 
@@ -234,6 +234,8 @@ public class PassMetersFragment extends Fragment {
 
 
               if (item.isEmpty()) {
+                  ArrayList<SummaryPassItemAdapter.RecycleViewViewHolder> cardview = adapter.getCardView();
+                  cardview.get(i).userDataInput.setBackgroundResource(R.drawable.dra20);
                   Toast.makeText(getContext(), "Введите показания", Toast.LENGTH_LONG).show();
                   return;
               }

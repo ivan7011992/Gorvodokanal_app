@@ -23,9 +23,11 @@ import java.util.Collections;
 public class SummaryPassItemAdapter  extends RecyclerView.Adapter< SummaryPassItemAdapter.RecycleViewViewHolder> {
     private ArrayList<VodomerItem> vodomerItems;
     private ArrayList<String> userData;
+    private ArrayList<RecycleViewViewHolder> cardView;
     public SummaryPassItemAdapter(ArrayList<VodomerItem> passMetersItems) {
         this.vodomerItems =  passMetersItems;
         userData = new ArrayList<String>(Collections.nCopies(passMetersItems.size(), new String()));
+        cardView = new ArrayList<>();
     }
 
     public static class RecycleViewViewHolder extends RecyclerView.ViewHolder {
@@ -61,6 +63,7 @@ public class SummaryPassItemAdapter  extends RecyclerView.Adapter< SummaryPassIt
     @Override
     public SummaryPassItemAdapter.RecycleViewViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {// нужно передать разметку в наш адаптер
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pass_meters_items, viewGroup, false);
+
         SummaryPassItemAdapter.RecycleViewViewHolder recycleViewViewHolder = new SummaryPassItemAdapter.RecycleViewViewHolder(view);
         return recycleViewViewHolder;
     }
@@ -70,7 +73,7 @@ public class SummaryPassItemAdapter  extends RecyclerView.Adapter< SummaryPassIt
     @Override
     public void onBindViewHolder(@NonNull SummaryPassItemAdapter.RecycleViewViewHolder recycleViewViewHolder, final int i) {
         VodomerItem vodomerItem = vodomerItems.get(i);// при помощт i свящвваем каждый элемт из ArrayList с элметом RecycleVIew
-
+        cardView.add(i,recycleViewViewHolder);
 
         recycleViewViewHolder.node.setText(String.valueOf(vodomerItem.getNode() + " " +  vodomerItem.getPr_vod()));
         recycleViewViewHolder.n_vodomer.setText(String.valueOf(vodomerItem.getNomerVodomer()));
@@ -109,6 +112,10 @@ public class SummaryPassItemAdapter  extends RecyclerView.Adapter< SummaryPassIt
 
     public ArrayList<String> getUserData() {
         return userData;
+    }
+
+    public ArrayList<RecycleViewViewHolder> getCardView() {
+        return cardView;
     }
 
     @Override
