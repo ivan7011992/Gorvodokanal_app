@@ -94,6 +94,7 @@ public class SummaryPassItemAdapter  extends RecyclerView.Adapter< SummaryPassIt
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   recycleViewViewHolder.userDataInput.setBackgroundResource(R.drawable.dra10);
                     userData.set(i, s.toString());
                     recycleViewViewHolder.sumData =  userData.set(i, s.toString());
 

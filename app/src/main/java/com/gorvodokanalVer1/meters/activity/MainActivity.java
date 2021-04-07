@@ -190,6 +190,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     protected void onResume() {
         super.onResume();
         if(UserModel.getInstance() != null){
+            Toast.makeText(MainActivity.this, "Для завершения работы с приложением выберите в меню пункт «Выход»", Toast.LENGTH_LONG).show();
             Intent appActivity = new Intent(this, AppActivity.class);
             startActivity(appActivity);
         }

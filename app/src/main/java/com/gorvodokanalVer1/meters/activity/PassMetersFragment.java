@@ -227,22 +227,35 @@ public class PassMetersFragment extends Fragment {
         }
 
        requestData.put("meters", userData);
-
+       // int errors[] = new int[userData.size()];
+        ArrayList<Integer> errors = new ArrayList<>();
+        ArrayList<SummaryPassItemAdapter.RecycleViewViewHolder> cardview = adapter.getCardView();
           for(int i= 0; i< userData.size(); i++) {
                 String item = userData.get(i);
 
-
-
               if (item.isEmpty()) {
-                  ArrayList<SummaryPassItemAdapter.RecycleViewViewHolder> cardview = adapter.getCardView();
-                  cardview.get(i).userDataInput.setBackgroundResource(R.drawable.dra20);
-                  Toast.makeText(getContext(), "Введите показания", Toast.LENGTH_LONG).show();
-                  return;
+
+
+                for(i=0; i< cardview.size(); i ++) {
+                    cardview.get(i).userDataInput.setBackgroundResource(R.drawable.dra21);
+                    cardview.get(i).userDataInput.requestFocus();
+                    Toast.makeText(getContext(), "Введите показания", Toast.LENGTH_LONG).show();
+                    errors.add(i);
+                }
+                 return;
               }
-              double itemValue = Double.parseDouble(item);
-              if(itemValue < data.get(i).getPokaz()){
-                  Toast.makeText(getContext(), "Показания не могут быть меньше текущих", Toast.LENGTH_LONG).show();
-                  return;
+
+              }
+              for(int j= 0; j< userData.size(); j++) {
+                  String item = userData.get(i);
+                  if(errors.size()==0) {
+                      double itemValue = Double.parseDouble(item);
+                      if (itemValue < data.get(i).getPokaz()) {
+                          cardview.get(i).userDataInput.setBackgroundResource(R.drawable.dra21);
+                          cardview.get(i).userDataInput.requestFocus();
+                          Toast.makeText(getContext(), "Показания не могут быть меньше текущих", Toast.LENGTH_LONG).show();
+                          return;
+                      }
               }
 
           }
