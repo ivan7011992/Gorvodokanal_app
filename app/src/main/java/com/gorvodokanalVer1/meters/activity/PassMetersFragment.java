@@ -63,7 +63,8 @@ public class PassMetersFragment extends Fragment {
     ProgressDialog mDialog;
     VodomerItem vodomerItem;
     TextView noMeters;
-   static int  i=1;
+    static int i = 1;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pass_meters, container, false);
@@ -78,7 +79,6 @@ public class PassMetersFragment extends Fragment {
         mDialog.setMessage("Загрузка...");
         mDialog.setCancelable(false);
         mDialog.show();
-
 
 
         return view;
@@ -166,7 +166,7 @@ public class PassMetersFragment extends Fragment {
 
         TextView noMeters = getView().findViewById(R.id.noMeters);
 
-        if(noMeters != null) {
+        if (noMeters != null) {
             if (noMeters.getText().length() == 0) {
                 Utils.removeElement(noMeters);
             }
@@ -194,7 +194,7 @@ public class PassMetersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                   passMetersData(adapter);
+                passMetersData(adapter);
 
             }
         });
@@ -214,7 +214,6 @@ public class PassMetersFragment extends Fragment {
     }
 
 
-
     public void passMetersData(SummaryPassItemAdapter adapter) {
         ArrayList<String> userData = adapter.getUserData();
         final RequestQueue mQueue = RequestQueueSingleton.getInstance(getContext());
@@ -226,66 +225,54 @@ public class PassMetersFragment extends Fragment {
             requestData.put("dateIndicators", datePassMeters);
         }
 
-       requestData.put("meters", userData);
-       // int errors[] = new int[userData.size()];
-        ArrayList<Integer> errors = new ArrayList<>();
+        requestData.put("meters", userData);
+        // int errors[] = new int[userData.size()];
+
         ArrayList<SummaryPassItemAdapter.RecycleViewViewHolder> cardview = adapter.getCardView();
-          for(int i= 0; i< userData.size(); i++) {
-                String item = userData.get(i);
+        boolean hasErrors = false;
+        for (int i = 0; i < userData.size(); i++) {
+            String item = userData.get(i);
+            String error = checkUserData(item, i);
 
-              if (item.isEmpty()) {
+            if (error != null) {
 
-
-                for(i=0; i< cardview.size(); i ++) {
-                    cardview.get(i).userDataInput.setBackgroundResource(R.drawable.dra21);
+                cardview.get(i).userDataInput.setBackgroundResource(R.drawable.dra21);
+                if (hasErrors == false) {
                     cardview.get(i).userDataInput.requestFocus();
-                    Toast.makeText(getContext(), "Введите показания", Toast.LENGTH_LONG).show();
-                    errors.add(i);
                 }
-                 return;
-              }
+                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+                hasErrors = true;
+            }
 
-              }
-              for(int j= 0; j< userData.size(); j++) {
-                  String item = userData.get(i);
-                  if(errors.size()==0) {
-                      double itemValue = Double.parseDouble(item);
-                      if (itemValue < data.get(i).getPokaz()) {
-                          cardview.get(i).userDataInput.setBackgroundResource(R.drawable.dra21);
-                          cardview.get(i).userDataInput.requestFocus();
-                          Toast.makeText(getContext(), "Показания не могут быть меньше текущих", Toast.LENGTH_LONG).show();
-                          return;
-                      }
-              }
-
-          }
-
-
-
+        }
+       if(hasErrors){
+           return;
+       }
 
         PostRequest request = new PostRequest(mQueue);
         request.makeRequest(UrlCollection.SET_METERS, requestData, new VolleyJsonSuccessCallback() {
-            @Override
-            public void onSuccess(JSONObject response) {
-                try {
-                    if (!response.has("success")) {
-                        Log.e("server", String.format("Error response from url %s: %s", UrlCollection.AUTH_URL, response.toString()));
-                        Toast.makeText(getContext(), "Неизвестная ошибка, попробуйте еще раз", Toast.LENGTH_LONG).show();
-                        return;
+                    @Override
+                    public void onSuccess(JSONObject response) {
+                        try {
+                            if (!response.has("success")) {
+
+                                Log.e("server", String.format("Error response from url %s: %s", UrlCollection.AUTH_URL, response.toString()));
+                                Toast.makeText(getContext(), "Неизвестная ошибка, попробуйте еще раз", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                            final boolean isSuccess = response.getBoolean("success");
+
+
+                            Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_LONG).show();
+                            createAlertDialog("", response.getString("message"));
+                            fetchAndDisplayData();
+
+
+                        } catch (Exception e) {
+                            Log.e("valley", "error", e);
+                        }
                     }
-                    final boolean isSuccess = response.getBoolean("success");
-
-
-                    Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_LONG).show();
-                    createAlertDialog("",  response.getString("message"));
-                    fetchAndDisplayData();
-
-
-                } catch (Exception e) {
-                    Log.e("valley", "error", e);
-                }
-            }
-        },
+                },
                 new VolleyJsonErrorCallback() {
                     @Override
                     public void onError(VolleyError error) {
@@ -294,6 +281,29 @@ public class PassMetersFragment extends Fragment {
                     }
 
                 });
+    }
+
+
+    public String checkUserData(String item, int i) {
+
+        if (item.isEmpty()) {
+
+            return "Введите показания";
+        } else {
+            try {
+                double itemValue = Double.parseDouble(item);
+
+                if (itemValue < data.get(i).getPokaz()) {
+
+                    return "Показания не могут быть меньше текущих";
+
+                }
+            } catch (NumberFormatException e) {
+                return "Введено не число";
+            }
+
+        }
+        return null;
     }
 
     //    private boolean validateMeters() {
@@ -358,7 +368,7 @@ public class PassMetersFragment extends Fragment {
         datePickerDialog.show();
     }
 
-    private void  showErrorDialog(){
+    private void showErrorDialog() {
         NoConnection dialog = new NoConnection();
         dialog.setTargetFragment(this, 1);
         dialog.show(this.getFragmentManager(), "MyCustomDialog");
