@@ -74,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Вопрос:"
+                android:textColor="#777777"
                 android:textSize="14dp"
                 />
 
@@ -85,6 +86,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:layout_marginTop="12dp"
                 android:textSize="14dp"
+                android:textColor="#777777"
                 android:textStyle="bold" />
 
             <TextView
@@ -94,6 +96,7 @@
                 android:layout_below="@+id/questionValue"
                 android:layout_marginTop="10dp"
                 android:text="Дата ответа"
+                android:textColor="#777777"
                 android:textSize="14dp"
                 />
 
@@ -106,6 +109,7 @@
                 android:layout_below="@+id/date_response"
                 android:layout_marginTop="10dp"
                 android:text="Ответ"
+                android:textColor="#777777"
                 android:textSize="14dp"
 
                 />
@@ -116,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/response"
                 android:layout_marginTop="10dp"
-
+                android:textColor="#777777"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Значение"
                 android:textSize="14dp"

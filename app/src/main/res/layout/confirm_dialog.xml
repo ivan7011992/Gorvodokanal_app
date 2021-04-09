@@ -30,6 +30,7 @@
             android:paddingTop="17dp"
             android:paddingBottom="17dp"
             android:paddingLeft="0dp"
+            style="@style/TextViewRoboto"
             android:paddingRight="0dp"
             android:textSize="20dp"
             android:gravity="center"

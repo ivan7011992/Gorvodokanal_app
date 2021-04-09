@@ -30,6 +30,7 @@ android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                style="@style/TextViewRoboto"
                 android:text="Логин:10-6666666"
                 android:textSize="14dp"
 

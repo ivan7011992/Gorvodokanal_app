@@ -16,13 +16,17 @@ import static android.content.ContentValues.TAG;
 
 public class MyFirebaseMassagingService extends FirebaseMessagingService {
 
- public MyFirebaseMassagingService(){
+
+
+ public  MyFirebaseMassagingService(){
          super();
  }
+ public static String userId;
+
     @Override
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
-        FirebaseMessaging.getInstance().subscribeToTopic("user.5")
+        FirebaseMessaging.getInstance().subscribeToTopic(userId)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -42,5 +46,11 @@ public class MyFirebaseMassagingService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
     }
+    public  static void getUserId(int userIdAuth){
+
+       userId = String.valueOf(userIdAuth);
+
+    }
+
 
 }

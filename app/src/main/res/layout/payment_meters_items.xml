@@ -41,11 +41,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/roboto_medium"
+                style="@style/TextViewRoboto"
                 android:paddingRight="3dp"
                 android:text="Долг на начало периода"
                 android:textSize="14dp"
-                android:textStyle="bold" />
+                />
 
             <TextView
                 android:id="@+id/deptBeginPeriodValue"
@@ -54,7 +54,7 @@
                 android:layout_marginRight="3dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp"
-
+                style="@style/TextViewRoboto"
                 android:textSize="14dp"
                 android:text="Значение"
                 android:textStyle="bold" />
@@ -67,9 +67,9 @@
                 android:layout_marginTop="5dp"
                 android:paddingRight="3dp"
                 android:text="Начисление за период"
-                android:fontFamily="@font/roboto_medium"
+                style="@style/TextViewRoboto"
                 android:textSize="14dp"
-                android:textStyle="bold" />
+                 />
 
             <TextView
                 android:id="@+id/nachisPeriodValue"
@@ -79,7 +79,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="3dp"
-
+                style="@style/TextViewRoboto"
                 android:text="Значение"
                 android:textSize="14dp"
 
@@ -90,12 +90,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nachislPeriod"
-                android:fontFamily="@font/roboto_medium"
                 android:layout_marginTop="5dp"
+                style="@style/TextViewRoboto"
                 android:paddingRight="3dp"
                 android:text="Оплачено за период"
                 android:textSize="14dp"
-                android:textStyle="bold" />
+                />
 
             <TextView
                 android:id="@+id/oplataPeriodPaymentValue"
@@ -107,7 +107,7 @@
                 android:paddingRight="3dp"
                 android:text="Значение"
                 android:textSize="14dp"
-
+                style="@style/TextViewRoboto"
                 android:textStyle="bold" />
 
             <TextView
@@ -115,12 +115,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/oplataPeriodPayment"
-                android:fontFamily="@font/roboto_medium"
                 android:layout_marginTop="5dp"
                 android:paddingRight="3dp"
+                style="@style/TextViewRoboto"
                 android:text="Долг на конец периода"
                 android:textSize="14dp"
-                android:textStyle="bold" />
+                 />
 
             <TextView
                 android:id="@+id/deptPeriodValue"
@@ -130,26 +130,26 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp"
                 android:text="Значение"
+                style="@style/TextViewRoboto"
                 android:paddingRight="3dp"
                 android:textSize="14dp"
                 android:textStyle="bold" />
 
 
-
-
-                <TextView
-                    android:id="@+id/summaValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/deptPeriodEnd"
-                    android:layout_toRightOf="@+id/deptPeriodEnd"
-                     android:layout_marginLeft="-40dp"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="К оплате:"
-                    android:paddingBottom="5dp"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/summaValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deptPeriodEnd"
+                android:layout_marginLeft="-40dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/deptPeriodEnd"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:text="К оплате:"
+                android:textColor="#777777"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/payment"
@@ -160,6 +160,7 @@
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:hint="Сумма"
+                    android:textColorHint="#777777"
                     android:layout_toRightOf="@+id/summaValue"
                     android:layout_below="@+id/deptPeriodEnd"
                     android:textSize="14dp"
@@ -172,6 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="К оплате:"
+                    android:textColor="#777777"
                     android:layout_toRightOf="@+id/summaValue"
                     android:layout_below="@+id/deptPeriodEnd"
                     android:paddingLeft="10dp"

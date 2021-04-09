@@ -106,6 +106,7 @@
             android:background="@drawable/dra5"
             android:onClick="formSubmit"
             android:text="Войти"
+
             android:textSize="14dp"/>
 
         <Button
@@ -117,7 +118,6 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/dra"
             android:text="Регистрация"
-
             android:textColor="#FFFFFF"
             android:textSize="14dp"
             />
