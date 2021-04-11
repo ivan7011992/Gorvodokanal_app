@@ -1,5 +1,16 @@
 package com.gorvodokanalVer1.meters.model;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.gorvodokanalVer1.MyFirebaseMassagingService;
+import com.gorvodokanalVer1.meters.activity.MainActivity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +46,7 @@ public class UserModel {
         this.status = status;
         this.email = email;
         this.userId = userId;
+        subcribePush();
     }
 
     public void removeLs(Integer lsUser) {
@@ -97,6 +109,7 @@ public class UserModel {
         LinkedHashMap<Integer, String> ls = new LinkedHashMap<>();
 
 
+
         JSONArray lsList = json.getJSONArray("ls");
 
         Integer countSupportItems = Integer.parseInt(json.getString("SupportItems"));
@@ -128,5 +141,16 @@ public class UserModel {
         this.ls = new LinkedHashMap<>();
     }
 
+  private void subcribePush(){
 
+      FirebaseMessaging.getInstance().subscribeToTopic("user."+ getUserId())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+          @Override
+          public void onComplete(@NonNull Task<Void> task) {
+
+
+              Log.d("push", "subscrabe success");
+          }
+      });
+  };
 }

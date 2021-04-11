@@ -394,6 +394,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         confirmCode.show(fm, "NoticeDialogFragment");
     }
 
+
 }
 //сделать страницу на сервере для полуение дданных
 //активити
