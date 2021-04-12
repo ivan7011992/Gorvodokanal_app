@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.gorvodokanalVer1.MyFirebaseMassagingService;
 import com.gorvodokanalVer1.meters.historyUtilClass.SummaryHistoryItemAdapter;
 import com.gorvodokanalVer1.meters.model.SummaryHistoryItem;
 import com.gorvodokanalVer1.meters.model.UserModel;
@@ -309,6 +310,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
 
                     UserModel.createInstanceFromJson(response);
+                    MyFirebaseMassagingService.getUserId(UserModel.getInstance().getUserId());
                     Intent intent = new Intent(MainActivity.this, AppActivity.class);
                     startActivity(intent);
 

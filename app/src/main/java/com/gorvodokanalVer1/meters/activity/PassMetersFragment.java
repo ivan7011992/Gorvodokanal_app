@@ -299,7 +299,7 @@ public class PassMetersFragment extends Fragment {
 
                 }
             } catch (NumberFormatException e) {
-                return "Введено не число";
+                return "Не числовое значеине";
             }
 
         }
