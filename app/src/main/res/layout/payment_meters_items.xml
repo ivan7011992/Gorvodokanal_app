@@ -21,7 +21,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/dra12"
-
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
                 android:text="Всего"

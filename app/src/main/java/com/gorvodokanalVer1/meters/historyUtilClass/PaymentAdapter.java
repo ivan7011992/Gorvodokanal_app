@@ -84,10 +84,9 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.RecycleV
             ((ViewManager) entry.getParent()).removeView(entry);
             double sum =0;
             double totalSum = item.dept();
-            if(item.deptEnd()<0){
-                recycleViewViewHolder.deptPeriodEnd.setText("Переплата на конец периода");
-
-            }
+//            if(item.deptEnd()<0){
+//                recycleViewViewHolder.deptPeriodEnd.setText("Переплата на конец периода");
+//            }
             paymentFragment.setTextSum(sum,totalSum);
             TextView title = recycleViewViewHolder.title;
             title.setBackgroundResource(0);

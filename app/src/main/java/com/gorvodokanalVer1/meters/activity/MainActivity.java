@@ -310,7 +310,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
 
                     UserModel.createInstanceFromJson(response);
-                    MyFirebaseMassagingService.getUserId(UserModel.getInstance().getUserId());
+                   // MyFirebaseMassagingService.getUserId(UserModel.getInstance().getUserId());
                     Intent intent = new Intent(MainActivity.this, AppActivity.class);
                     startActivity(intent);
 

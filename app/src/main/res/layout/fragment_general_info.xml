@@ -52,9 +52,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingLeft="1dp"
+                android:paddingLeft="4dp"
                 android:paddingRight="1dp"
-                android:text="ОБЩАЯ ИНФОРМАЦИЯ"
+                android:textSize="18dp"
+                android:text="Общая информация"
                 android:layout_marginTop="10dp"
                 android:textColor="#000000"
                 android:textStyle="bold"
@@ -163,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:text="Холодное водоснабжение:"
                     android:layout_marginLeft="10dp"
-
+                    android:textSize="14dp"
                     android:layout_below="@id/tariff"
                     android:textStyle="bold"
                     android:textColor="#0B0B0B"
@@ -188,6 +189,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
+                    android:textSize="14dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_below="@id/cool_data"
@@ -268,6 +270,7 @@
                 android:layout_height="wrap_content"
                 android:text="Нормативное потребление воды на \n одного чел/месяц:"
                 android:layout_marginLeft="10dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 android:textColor="#0B0B0B"
                 />
@@ -277,6 +280,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:textSize="14dp"
                 android:text="Значение"
                 android:layout_marginLeft="10dp"
                 android:textColor="#777777"
@@ -302,7 +306,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="Стоимость 1м воды"
                     android:textColor="#0B0B0B"
-
+                    android:textSize="14dp"
                     android:textStyle="bold" />
 
             <TextView
@@ -312,6 +316,7 @@
                android:text="Значение"
                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
+                android:textSize="14dp"
                 android:gravity="right"
                 android:textColor="#777777"
                 android:paddingRight="10dip"
@@ -332,7 +337,7 @@
                     android:layout_height="wrap_content"
                     android:text="Нормативное по водоотведению \n на чел/месяц"
                     android:layout_marginLeft="10dp"
-
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     android:textColor="#0B0B0B"
                     />
@@ -343,6 +348,7 @@
                     android:text="Значение"
                     android:layout_weight="1"
                     android:gravity="right"
+                    android:textSize="14dp"
                     android:paddingRight="10dip"
                     android:layout_alignParentRight="true"
                     android:textColor="#777777"
@@ -361,6 +367,7 @@
                 android:layout_height="wrap_content"
                 android:text="Стоимость 1м стоков:"
                 android:layout_marginLeft="10dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 android:textColor="#0B0B0B"
                 />
@@ -372,6 +379,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:paddingRight="10dip"
+                android:textSize="14dp"
                 android:layout_alignParentEnd="true"
                 android:textColor="#777777"
                 android:layout_marginLeft="10dp" />
@@ -382,6 +390,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginBottom="6dp"
+                    android:textSize="14dp"
                     android:layout_marginTop="10dp"
                     >
                     <TextView
@@ -390,6 +399,7 @@
                         android:layout_height="wrap_content"
                         android:text="Количество человек:"
                         android:layout_marginLeft="10dp"
+                        android:textSize="14dp"
                         android:textStyle="bold"
                         android:textColor="#0B0B0B"
                         />
@@ -401,6 +411,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:paddingRight="10dip"
+                        android:textSize="14dp"
                         android:layout_alignParentEnd="true"
                         android:textColor="#777777"
                         android:layout_marginLeft="10dp" />
@@ -426,8 +437,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Приборы учёта"
+                android:paddingLeft="4dp"
                 android:paddingTop="5dp"
-
                 android:background="@drawable/dra12"
                 android:textColor="#000000"
                 android:textStyle="bold"

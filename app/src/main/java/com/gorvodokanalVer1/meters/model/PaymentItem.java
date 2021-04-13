@@ -26,7 +26,6 @@ public class PaymentItem {
         NAME_USLUGI = row.getString("NAME_USLUGI");
 
 
-
     }
 
     public double dept() {
