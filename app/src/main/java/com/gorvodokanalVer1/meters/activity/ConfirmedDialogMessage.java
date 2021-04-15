@@ -37,10 +37,10 @@ public class ConfirmedDialogMessage extends DialogFragment {
 
     String email;
     FloatingActionButton myFab;
-    public  ConfirmedDialogMessage(String email){
-        this.email = email;
-    }
+
+
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        email = getArguments().getString("email");
         View view = inflater.inflate(R.layout.confirm_dialog, container, false);
         if (getDialog() != null && getDialog().getWindow() != null) {
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -48,16 +48,16 @@ public class ConfirmedDialogMessage extends DialogFragment {
         }
         Button buttonConfirm = (Button) view.findViewById(R.id.buttonConfirm);
         ((TextView) view.findViewById(R.id.emailConfirm)).setText(email);
-        myFab =  view.findViewById(R.id.floatingcloseConfirmDialog);
+        myFab = view.findViewById(R.id.floatingcloseConfirmDialog);
 
         RelativeLayout.LayoutParams layoutparams = (RelativeLayout.LayoutParams) myFab.getLayoutParams();
         layoutparams.setMargins(0, 0, 0, 0);
         myFab.setLayoutParams(layoutparams);
-       myFab.setOnClickListener(new View.OnClickListener() {
-           public void onClick(View v) {
-              getDialog().dismiss();
-           }
-       });
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                getDialog().dismiss();
+            }
+        });
 
 
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +70,12 @@ public class ConfirmedDialogMessage extends DialogFragment {
 
         return view;
     }
-    public  void sendMail(){
+
+    public void sendMail() {
         final RequestQueue mQueue = RequestQueueSingleton.getInstance(getContext());
         GetRequest request = new GetRequest(mQueue);
 
-        String requestUrl = UrlCollection.RESENDING_URL + "?userId=" + UserModel.getInstance().getUserId() + "&email=" +  UserModel.getInstance().getEmail();
+        String requestUrl = UrlCollection.RESENDING_URL + "?userId=" + UserModel.getInstance().getUserId() + "&email=" + UserModel.getInstance().getEmail();
 
 
         request.makeRequest(requestUrl, new VolleyJsonSuccessCallback() {
@@ -105,4 +106,13 @@ public class ConfirmedDialogMessage extends DialogFragment {
         });
     }
 
-   }
+
+    public static ConfirmedDialogMessage newInstance(String email) {
+        ConfirmedDialogMessage f = new ConfirmedDialogMessage();
+        Bundle args = new Bundle();
+        args.putString("email", email);
+        f.setArguments(args);
+        return f;
+    }
+
+}

@@ -32,9 +32,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if(!UserModel.getInstance().isStatus()) {
 
             preferenceScreen.removePreference(showContact);
-            ConfirmedDialogMessage confirmedDialogMessage = new ConfirmedDialogMessage(UserModel.getInstance().getEmail());
+            ConfirmedDialogMessage confirmedDialogMessage = ConfirmedDialogMessage.newInstance(UserModel.getInstance().getEmail());
             confirmedDialogMessage.setTargetFragment(SettingsFragment.this, 1);
             confirmedDialogMessage.show(SettingsFragment.this.getFragmentManager(), "MyCustomDialog");
+
         }
     }
 

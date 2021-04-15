@@ -76,6 +76,10 @@ public class AppActivity extends AppCompatActivity implements NavigationView.OnN
         //  toolBar.setSubtitleTextColor(Color.WHITE);
 
         View header = sideBar.getHeaderView(0);
+        if(UserModel.getInstance()==null){
+            Intent intent = new Intent(this,MainActivity.class);
+             startActivity(intent);
+        }
         ((TextView) header.findViewById(R.id.text)).setText(UserModel.getInstance().getLogin());
         View exit = sideBar.findViewById(R.id.exit);
 

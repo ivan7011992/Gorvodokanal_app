@@ -97,7 +97,7 @@ public class UserModel {
         instance = new UserModel(login, ls, countSupportItems, status, email, userId);
     }
 
-    public  static  void clearInstance(){
+    public static void clearInstance() {
         instance = null;
     }
 
@@ -107,21 +107,14 @@ public class UserModel {
 
     public static void createInstanceFromJson(JSONObject json) throws JSONException {
         LinkedHashMap<Integer, String> ls = new LinkedHashMap<>();
-
-
-
         JSONArray lsList = json.getJSONArray("ls");
-
         Integer countSupportItems = Integer.parseInt(json.getString("SupportItems"));
         String login = json.getString("login");
-
 
         boolean status = json.getBoolean("statusConfirmMail");
         String email = json.getString("email");
         int userId = json.getInt("id");
-
         for (int i = 0; i < lsList.length(); i++) {
-
             JSONObject currentLs = (JSONObject) lsList.get(i);
             if (currentLs.getString("LOGIN").equals(login)) {
                 ls.put(Integer.parseInt(currentLs.getString("ID")), currentLs.getString("LOGIN"));
@@ -141,16 +134,19 @@ public class UserModel {
         this.ls = new LinkedHashMap<>();
     }
 
-  private void subcribePush(){
+    private void subcribePush() {
 
-      FirebaseMessaging.getInstance().subscribeToTopic("user."+ getUserId())
+      //  FirebaseMessaging.getInstance().unsubscribeFromTopic("user." + "341750");
+        FirebaseMessaging.getInstance().subscribeToTopic("user." + getUserId())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-          @Override
-          public void onComplete(@NonNull Task<Void> task) {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
 
 
-              Log.d("push", "subscrabe success");
-          }
-      });
-  };
+                        Log.d("push", "subscrabe success");
+                    }
+                });
+    }
+
+    ;
 }

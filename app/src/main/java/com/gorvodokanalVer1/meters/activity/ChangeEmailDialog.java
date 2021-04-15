@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceScreen;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
@@ -102,7 +103,7 @@ public class ChangeEmailDialog extends DialogFragment {
                         getDialog().dismiss();
 
 
-                        ConfirmedDialogMessage confirmedDialogMessage = new ConfirmedDialogMessage(UserModel.getInstance().getEmail());
+                        ConfirmedDialogMessage confirmedDialogMessage = ConfirmedDialogMessage.newInstance(UserModel.getInstance().getEmail());
                         confirmedDialogMessage.setTargetFragment(ChangeEmailDialog.this, 1);
                         confirmedDialogMessage.show(ChangeEmailDialog.this.getFragmentManager(), "MyCustomDialog");
 

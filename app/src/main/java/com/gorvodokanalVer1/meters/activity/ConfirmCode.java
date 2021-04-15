@@ -103,6 +103,7 @@ public ConfirmCode(String login, Activity activity ){
                            UserModel.createInstanceFromJson(response.getJSONObject("userData"));
                            Toast.makeText(mActivity, "Аккаунт активирован", Toast.LENGTH_LONG).show();
                            getDialog().dismiss();
+
                            Intent intent = new Intent(mActivity, AppActivity.class);
                            mActivity.startActivity(intent);
 
