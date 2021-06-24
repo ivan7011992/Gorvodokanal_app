@@ -65,6 +65,10 @@ public class UserModel {
         return countSupportItems;
     }
 
+    public void setCountSupportItems(int countSupportItems) {
+        this.countSupportItems = countSupportItems;
+    }
+
     public Map<Integer, String> getLs() {
         return ls;
     }

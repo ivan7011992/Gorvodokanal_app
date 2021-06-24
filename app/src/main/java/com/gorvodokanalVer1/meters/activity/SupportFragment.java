@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.gorvodokanalVer1.R;
 import com.gorvodokanalVer1.meters.historyUtilClass.SupportAdapter;
 import com.gorvodokanalVer1.meters.model.SupportItem;
+import com.gorvodokanalVer1.meters.model.UserModel;
 import com.gorvodokanalVer1.meters.net.GetRequest;
 import com.gorvodokanalVer1.meters.net.PostRequest;
 import com.gorvodokanalVer1.meters.net.RequestQueueSingleton;
@@ -143,6 +144,7 @@ Button button;
                             if(!isSuccess){
                                 Toast.makeText(getActivity(), "Данные не получены", Toast.LENGTH_LONG).show();
                             }
+                            UserModel.getInstance().setCountSupportItems(0);
                             JSONArray rows = response.getJSONArray("data");
                             data = buildData(rows);
 

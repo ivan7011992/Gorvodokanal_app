@@ -38,7 +38,17 @@
             android:textColor="#000000"
 
            />
-
+        <TextView
+            android:id="@+id/endMonthBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="30dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            android:textSize="14dp"
+            android:textColor="#FF424F"
+            />
         <TextView
             android:id="@+id/noMeters"
             android:layout_width="match_parent"

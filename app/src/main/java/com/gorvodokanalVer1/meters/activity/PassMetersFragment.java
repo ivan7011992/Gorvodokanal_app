@@ -63,6 +63,7 @@ public class PassMetersFragment extends Fragment {
     ProgressDialog mDialog;
     VodomerItem vodomerItem;
     TextView noMeters;
+    TextView endMonthBlock;
     static int i = 1;
 
     @Override
@@ -90,11 +91,13 @@ public class PassMetersFragment extends Fragment {
         fetchAndDisplayData();
 
         noMeters = getView().findViewById(R.id.noMeters);
+        endMonthBlock = getView().findViewById(R.id.endMonthBlock);
         Calendar calendar = Calendar.getInstance();
         String[] monthNames = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
         String month = monthNames[calendar.get(Calendar.MONTH)];
         int year = calendar.get(Calendar.YEAR);
         String currentDate = month + " " + year;
+        Calendar calendar2 = Calendar.getInstance();
 
 
         ((TextView) getView().findViewById(R.id.headerPassMeters)).setText(currentDate);
@@ -171,9 +174,23 @@ public class PassMetersFragment extends Fragment {
                 Utils.removeElement(noMeters);
             }
         }
+
+
     }
 
+
     private void passMetrsView(ArrayList<VodomerItem> data) {
+
+        Calendar calendar = Calendar.getInstance();
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int firstday =  25;
+        int endday =  calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
+         if  (currentDay >= firstday  &&  currentDay<= endday){
+             endMonthBlock.setText("Обращаем Ваше внимание, что показания, переданные после 25 числа, будут учтены при расчете размера платы в следующем расчетном периоде.");
+         }else{
+             Utils.removeElement(endMonthBlock);
+         }
+
 
         RecyclerView passMetersView = (RecyclerView) getView().findViewById(R.id.passMeters);
         passMetersView.setAdapter(null);
